@@ -1,0 +1,21 @@
+body {
+  font-family: sans-serif;
+}
+
+#authFactors {
+  display: flex;
+  justify-content: space-around;
+}
+
+.factor {
+  width: 30%;
+  border: 1px solid #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+.factor img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}

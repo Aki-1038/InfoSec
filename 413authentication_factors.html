@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身份驗證因子</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">身份驗證因子</h1>
+        <p>身份驗證因子是用於驗證用戶身份的不同方法。通常分為三類：知識因子（用戶知道的東西）、擁有因子（用戶擁有的東西）和生物特徵因子（用戶的生物特徵）。</p>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>身份驗證因子</h4>
+            </div>
+            <div class="card-body">
+                <h5>知識因子(所知之事)</h5>
+                <p>這是用戶知道的東西，例如密碼、PIN 碼或安全問題的答案。</p>
+                <h5>擁有因子(所持之物)</h5>
+                <p>這是用戶擁有的東西，例如智能卡、手機或硬體令牌。</p>
+                <h5>生物特徵因子(所具之形)</h5>
+                <p>這是用戶的生物特徵，例如指紋、虹膜掃描或面部識別。</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>身份驗證示例</h4>
+            </div>
+            <div class="card-body">
+                <form id="authenticationForm">
+                    <div class="form-group">
+                        <label for="username">用戶名：</label>
+                        <input type="text" id="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密碼：</label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">驗證</button>
+                </form>
+                <div class="mt-4">
+                    <h4>驗證結果：</h4>
+                    <pre id="authenticationResult"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('authenticationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            let result = '';
+
+            // 模擬身份驗證過程
+            if (username === 'user' && password === 'password123') {
+                result = '驗證成功！';
+            } else {
+                result = '驗證失敗，請重試。';
+            }
+
+            document.getElementById('authenticationResult').textContent = result;
+        });
+    </script>
+</body>
+</html>

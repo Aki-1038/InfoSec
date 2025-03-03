@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交工程</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">社交工程</h1>
+        <p>社交工程（Social Engineering）是一種通過操縱人類心理來獲取機密信息或進行未授權操作的技術。攻擊者利用人類的信任、恐懼或貪婪等心理弱點來實施攻擊。</p>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>社交工程示例</h4>
+            </div>
+            <div class="card-body">
+                <p>在這個示例中，我們將模擬一個社交工程攻擊，展示攻擊者如何通過欺騙手段來獲取機密信息。</p>
+                <button id="phishingButton" class="btn btn-danger">模擬釣魚攻擊</button>
+                <p class="mt-3" id="attackOutput"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('phishingButton').addEventListener('click', function() {
+            const userResponse = prompt('您有一封新的電子郵件，請輸入您的電子郵件帳號和密碼以查看：');
+            let output = '';
+
+            if (userResponse) {
+                output = '攻擊成功！攻擊者獲取了您的機密信息：' + userResponse;
+            } else {
+                output = '攻擊失敗。您沒有提供任何信息。';
+            }
+
+            document.getElementById('attackOutput').innerHTML = output;
+        });
+    </script>
+</body>
+</html>

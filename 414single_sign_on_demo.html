@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>單一登入</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">單一登入</h1>
+        <p>單一登入（Single Sign-On, SSO）是一種身份驗證過程，允許用戶使用一組登入憑證（如用戶名和密碼）訪問多個應用程式或服務。這種方式提高了便利性和安全性，因為用戶只需記住一組登入資料即可操作各種平台。</p>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>單一登入原理</h4>
+            </div>
+            <div class="card-body">
+                <p>單一登入的基本原理是通過一個中央身份驗證服務器來管理用戶的身份驗證。當用戶登入一個應用程式時，該應用程式會向身份驗證服務器請求驗證用戶的身份。一旦用戶通過驗證，身份驗證服務器會發送一個令牌給應用程式，允許用戶訪問該應用程式。</p>
+                <h5>單一登入的優點</h5>
+                <ul>
+                    <li>簡化用戶體驗：用戶只需記住一組憑證即可訪問多個應用程式。</li>
+                    <li>提高安全性：減少了用戶重複使用密碼的風險。</li>
+                    <li>集中管理：管理員可以集中管理用戶的身份驗證和授權。</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>單一登入示例</h4>
+            </div>
+            <div class="card-body">
+                <form id="ssoForm">
+                    <div class="form-group">
+                        <label for="username">用戶名：</label>
+                        <input type="text" id="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">密碼：</label>
+                        <input type="password" id="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">登入</button>
+                </form>
+                <div class="mt-4">
+                    <h4>登入結果：</h4>
+                    <pre id="ssoResult"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('ssoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            let result = '';
+
+            // 模擬單一登入過程
+            if (username === 'user' && password === 'password123') {
+                result = '登入成功！您現在可以訪問多個應用程式。';
+            } else {
+                result = '登入失敗，請重試。';
+            }
+
+            document.getElementById('ssoResult').textContent = result;
+        });
+    </script>
+</body>
+</html>

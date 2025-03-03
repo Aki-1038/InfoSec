@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身份驗證因子</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 自定義樣式 -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">身份驗證因子</h1>
+        
+        <!-- 介紹部分 -->
+        <div class="intro-section">
+            <h2>什麼是身份驗證因子？</h2>
+            <p>身份驗證因子是用來驗證使用者身份的不同方式，主要分為三大類：</p>
+            <ul>
+                <li>知識因子（Something you know）</li>
+                <li>擁有因子（Something you have）</li>
+                <li>固有因子（Something you are）</li>
+            </ul>
+        </div>
+        
+        <!-- 身份驗證因子展示 -->
+        <div class="row mt-4">
+            <!-- 知識因子 -->
+            <div class="col-md-4">
+                <div class="card factor-card" data-factor="knowledge">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="知識因子">
+                    <div class="card-body">
+                        <h5 class="card-title">知識因子</h5>
+                        <p class="card-text">使用者知道的資訊，例如密碼或PIN碼。</p>
+                        <button class="btn btn-primary view-demo">查看示範</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 擁有因子 -->
+            <div class="col-md-4">
+                <div class="card factor-card" data-factor="possession">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="擁有因子">
+                    <div class="card-body">
+                        <h5 class="card-title">擁有因子</h5>
+                        <p class="card-text">使用者擁有的物品，例如手機或硬體金鑰。</p>
+                        <button class="btn btn-primary view-demo">查看示範</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 固有因子 -->
+            <div class="col-md-4">
+                <div class="card factor-card" data-factor="inherence">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="固有因子">
+                    <div class="card-body">
+                        <h5 class="card-title">固有因子</h5>
+                        <p class="card-text">使用者的生理特徵，例如指紋或臉部辨識。</p>
+                        <button class="btn btn-primary view-demo">查看示範</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 示範區域 -->
+        <div class="demo-section mt-5">
+            <h3>互動示範</h3>
+            <div id="demo-content" class="mt-3">
+                <p>請點擊右側的「查看示範」按鈕來了解更多。</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS 和依賴 -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- 自定義腳本 -->
+    <script src="script.js"></script>
+</body>
+</html>

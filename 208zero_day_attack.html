@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>零時差攻擊</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">零時差攻擊</h1>
+        <p>零時差攻擊（Zero-Day Attack）是一種利用尚未公開或修補的軟體漏洞進行的攻擊。這些漏洞在被發現和修補之前，攻擊者可以利用它們來進行未授權的操作。</p>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>選擇漏洞狀態</h4>
+            </div>
+            <div class="card-body">
+                <button id="vulnerableButton" class="btn btn-danger">有漏洞</button>
+                <button id="patchedButton" class="btn btn-success">沒有漏洞</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>零時差攻擊示例</h4>
+            </div>
+            <div class="card-body">
+                <p>在這個示例中，我們將模擬一個零時差攻擊，展示攻擊者如何利用未修補的漏洞來獲取未授權的存取權限。</p>
+                <button id="attackButton" class="btn btn-warning">模擬零時差攻擊</button>
+                <p class="mt-3" id="attackOutput"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let vulnerability = false; // 初始狀態為沒有漏洞
+
+        document.getElementById('vulnerableButton').addEventListener('click', function() {
+            vulnerability = true;
+            alert('系統現在有漏洞');
+        });
+
+        document.getElementById('patchedButton').addEventListener('click', function() {
+            vulnerability = false;
+            alert('系統現在沒有漏洞');
+        });
+
+        document.getElementById('attackButton').addEventListener('click', function() {
+            let output = '';
+
+            if (vulnerability) {
+                output = '攻擊成功！攻擊者利用零時差漏洞獲取了未授權的存取權限。';
+            } else {
+                output = '攻擊失敗。系統已修補漏洞。';
+            }
+
+            document.getElementById('attackOutput').innerHTML = output;
+        });
+    </script>
+</body>
+</html>

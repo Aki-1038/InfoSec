@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAPTCHA</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .captcha-image {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            background-color: #e9ecef;
+            padding: 10px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">CAPTCHA</h1>
+        <p>CAPTCHA（Completely Automated Public Turing test to tell Computers and Humans Apart）是一種用於區分人類和機器人的技術，通常用於防止自動化的垃圾郵件和惡意行為。</p>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>CAPTCHA 示例</h4>
+            </div>
+            <div class="card-body">
+                <p>在這個示例中，我們將展示一個簡單的 CAPTCHA，要求用戶輸入圖片中的字符以驗證他們是人類。</p>
+                <div class="captcha-image" id="captchaImage"></div>
+                <form id="captchaForm">
+                    <div class="form-group">
+                        <label for="captchaInput">輸入 CAPTCHA：</label>
+                        <input type="text" id="captchaInput" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">驗證</button>
+                </form>
+                <div class="mt-4">
+                    <h4>驗證結果：</h4>
+                    <pre id="captchaResult"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function generateCaptcha() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                const randomIndex = Math.floor(Math.random() * characters.length);
+                captcha += characters[randomIndex];
+            }
+            return captcha;
+        }
+
+        const captchaText = generateCaptcha();
+        document.getElementById('captchaImage').textContent = captchaText;
+
+        document.getElementById('captchaForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const userInput = document.getElementById('captchaInput').value;
+            const result = userInput === captchaText ? '驗證成功！' : '驗證失敗，請重試。';
+            document.getElementById('captchaResult').textContent = result;
+        });
+    </script>
+</body>
+</html>

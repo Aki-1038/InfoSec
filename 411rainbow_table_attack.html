@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>彩虹表攻擊</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">彩虹表攻擊</h1>
+        <p>彩虹表攻擊是一種通過預計算雜湊值來快速破解密碼的技術。攻擊者使用彩虹表來查找已知雜湊值對應的原始密碼。</p>
+        <form id="passwordForm">
+            <div class="form-group">
+                <label for="password">輸入密碼：</label>
+                <input type="password" id="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">生成雜湊值</button>
+        </form>
+        <div class="mt-4">
+            <h4>雜湊值：</h4>
+            <pre id="hashOutput"></pre>
+        </div>
+        <div class="mt-4">
+            <h4>彩虹表攻擊結果：</h4>
+            <pre id="attackOutput"></pre>
+        </div>
+        <p>彩虹表攻擊可以通過加鹽來防止。加鹽是指在密碼中添加隨機數據，這樣即使相同的密碼也會生成不同的雜湊值。</p>
+    </div>
+
+    <script>
+        const rainbowTable = {
+            '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8': 'password',
+            '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824': 'hello',
+            '81f3bf42a93cf18dece9321ac5c93313126eb5ca92164d74643e4cbf60ecde9c': 'Tom',
+            '5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5': '12345'
+        };
+
+        document.getElementById('passwordForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const hash = CryptoJS.SHA256(password).toString(CryptoJS.enc.Hex);
+            document.getElementById('hashOutput').textContent = hash;
+
+            if (rainbowTable[hash]) {
+                document.getElementById('attackOutput').textContent = `找到匹配的密碼：${rainbowTable[hash]}`;
+            } else {
+                document.getElementById('attackOutput').textContent = '未找到匹配的密碼。';
+            }
+        });
+    </script>
+</body>
+</html>

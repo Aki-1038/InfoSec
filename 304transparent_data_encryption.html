@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>透明資料加密</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">透明資料加密</h1>
+        <p>透明資料加密（Transparent Data Encryption, TDE）是一種用於加密資料庫文件的技術，通過加密資料庫文件來保護靜態數據的機密性。TDE 可以防止未經授權的用戶直接訪問資料庫文件。</p>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>透明資料加密示例</h4>
+            </div>
+            <div class="card-body">
+                <p>在這個示例中，我們將模擬透明資料加密的過程，展示如何加密和解密資料。</p>
+                <form id="encryptionForm">
+                    <div class="form-group">
+                        <label for="plaintext">輸入明文資料：</label>
+                        <input type="text" id="plaintext" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="key">輸入加密密鑰：</label>
+                        <input type="text" id="key" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">加密資料</button>
+                </form>
+                <div class="mt-4">
+                    <h4>加密後的資料：</h4>
+                    <pre id="ciphertextOutput"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>解密示例</h4>
+            </div>
+            <div class="card-body">
+                <form id="decryptionForm">
+                    <div class="form-group">
+                        <label for="ciphertext">輸入加密後的資料：</label>
+                        <input type="text" id="ciphertext" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="keyDecrypt">輸入解密密鑰：</label>
+                        <input type="text" id="keyDecrypt" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">解密資料</button>
+                </form>
+                <div class="mt-4">
+                    <h4>解密後的資料：</h4>
+                    <pre id="plaintextOutput"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script>
+        document.getElementById('encryptionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const plaintext = document.getElementById('plaintext').value;
+            const key = document.getElementById('key').value;
+            const ciphertext = CryptoJS.AES.encrypt(plaintext, key).toString();
+            document.getElementById('ciphertextOutput').textContent = ciphertext;
+        });
+
+        document.getElementById('decryptionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const ciphertext = document.getElementById('ciphertext').value;
+            const key = document.getElementById('keyDecrypt').value;
+            const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+            const plaintext = bytes.toString(CryptoJS.enc.Utf8);
+            document.getElementById('plaintextOutput').textContent = plaintext;
+        });
+    </script>
+</body>
+</html>

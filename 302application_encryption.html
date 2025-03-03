@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>應用程式加密</title>
+    <!-- 引入 Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">應用程式加密</h1>
+        <p>應用程式加密是一種保護應用程式數據的技術，利用應用程式內建的加密功能對資料加密成密文後再進行傳輸或儲存。</p>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>加密示例</h4>
+            </div>
+            <div class="card-body">
+                <form id="encryptionForm">
+                    <div class="form-group">
+                        <label for="plaintext">輸入明文：</label>
+                        <input type="text" id="plaintext" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="key">輸入密鑰：</label>
+                        <input type="text" id="key" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">加密</button>
+                </form>
+                <div class="mt-4">
+                    <h4>密文：</h4>
+                    <pre id="ciphertextOutput"></pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>解密示例</h4>
+            </div>
+            <div class="card-body">
+                <form id="decryptionForm">
+                    <div class="form-group">
+                        <label for="ciphertext">輸入密文：</label>
+                        <input type="text" id="ciphertext" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="keyDecrypt">輸入密鑰：</label>
+                        <input type="text" id="keyDecrypt" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">解密</button>
+                </form>
+                <div class="mt-4">
+                    <h4>明文：</h4>
+                    <pre id="plaintextOutput"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('encryptionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const plaintext = document.getElementById('plaintext').value;
+            const key = document.getElementById('key').value;
+            const ciphertext = CryptoJS.AES.encrypt(plaintext, key).toString();
+            document.getElementById('ciphertextOutput').textContent = ciphertext;
+        });
+
+        document.getElementById('decryptionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const ciphertext = document.getElementById('ciphertext').value;
+            const key = document.getElementById('keyDecrypt').value;
+            const bytes = CryptoJS.AES.decrypt(ciphertext, key);
+            const plaintext = bytes.toString(CryptoJS.enc.Utf8);
+            document.getElementById('plaintextOutput').textContent = plaintext;
+        });
+    </script>
+</body>
+</html>

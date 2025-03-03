@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>身份驗證因子展示</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .factor-card {
+            margin: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .factor-card:hover {
+            transform: translateY(-5px);
+        }
+        .demo-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">身份驗證因子展示</h1>
+
+        <!-- 介紹部分 -->
+        <div class="intro-section">
+            <h2>什麼是身份驗證因子？</h2>
+            <p>身份驗證因子是用來驗證使用者身份的不同方式，主要分為三大類：</p>
+        </div>
+
+        <!-- 三大驗證因子 -->
+        <div class="row">
+            <!-- 知識因子 -->
+            <div class="col-md-4">
+                <div class="factor-card" id="knowledge">
+                    <h3>知識因子</h3>
+                    <p>使用者知道的資訊</p>
+                    <ul>
+                        <li>密碼</li>
+                        <li>PIN碼</li>
+                        <li>安全問題答案</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showDemo('knowledge')">查看示範</button>
+                </div>
+            </div>
+
+            <!-- 擁有因子 -->
+            <div class="col-md-4">
+                <div class="factor-card" id="possession">
+                    <h3>擁有因子</h3>
+                    <p>使用者擁有的物品</p>
+                    <ul>
+                        <li>手機（接收簡訊驗證碼）</li>
+                        <li>硬體金鑰</li>
+                        <li>智慧卡</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showDemo('possession')">查看示範</button>
+                </div>
+            </div>
+
+            <!-- 固有因子 -->
+            <div class="col-md-4">
+                <div class="factor-card" id="inherence">
+                    <h3>固有因子</h3>
+                    <p>使用者的生理特徵</p>
+                    <ul>
+                        <li>指紋</li>
+                        <li>臉部辨識</li>
+                        <li>虹膜掃描</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showDemo('inherence')">查看示範</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 示範區域 -->
+        <div class="demo-section" id="demo-area">
+            <h3>互動示範</h3>
+            <div id="demo-content"></div>
+        </div>
+    </div>
+
+    <script>
+        function showDemo(factor) {
+            const demoContent = document.getElementById('demo-content');
+            switch(factor) {
+                case 'knowledge':
+                    demoContent.innerHTML = `
+                        <h4>密碼驗證示範</h4>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="請輸入密碼">
+                            <small class="form-text text-muted">這是最常見的知識因子驗證方式</small>
+                        </div>
+                    `;
+                    break;
+                case 'possession':
+                    demoContent.innerHTML = `
+                        <h4>雙因素驗證示範</h4>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="請輸入簡訊驗證碼">
+                            <small class="form-text text-muted">模擬接收到手機簡訊的驗證碼</small>
+                        </div>
+                    `;
+                    break;
+                case 'inherence':
+                    demoContent.innerHTML = `
+                        <h4>生物特徵驗證示範</h4>
+                        <div class="text-center">
+                            <img src="https://via.placeholder.com/150" alt="指紋掃描示意圖">
+                            <p class="mt-2">請將手指放在感應器上</p>
+                        </div>
+                    `;
+                    break;
+            }
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

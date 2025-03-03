@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交工程的原理及功能</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        h1, h2 {
+            color: #343a40;
+        }
+        p {
+            color: #495057;
+        }
+        .content {
+            display: none; /* 初始隱藏內容 */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">社交工程的原理及功能</h1>
+        
+        <h2>什麼是社交工程？</h2>
+        <button class="btn btn-info" onclick="toggleContent('definition')">顯示/隱藏定義</button>
+        <div id="definition" class="content">
+            <p>社交工程是一種心理操控技術，旨在通過操縱人類行為來獲取敏感資訊或進行不當行為。這種技術通常利用人類的信任、好奇心或恐懼來達成目的。</p>
+        </div>
+
+        <h2>社交工程的工作原理</h2>
+        <button class="btn btn-info" onclick="toggleContent('principle')">顯示/隱藏工作原理</button>
+        <div id="principle" class="content">
+            <ol>
+                <li><strong>情報收集：</strong>攻擊者會收集目標的資訊，例如社交媒體資料、工作背景等，以便制定攻擊計劃。</li>
+                <li><strong>建立信任：</strong>攻擊者會假裝成可信任的人或機構，與目標建立信任關係。</li>
+                <li><strong>誘導行為：</strong>攻擊者會利用建立的信任，誘導目標提供敏感資訊或執行某些行為。</li>
+                <li><strong>獲取資訊：</strong>一旦目標提供了所需的資訊，攻擊者就可以利用這些資訊進行進一步的攻擊。</li>
+            </ol>
+        </div>
+
+        <h2>社交工程的主要功能</h2>
+        <button class="btn btn-info" onclick="toggleContent('functions')">顯示/隱藏主要功能</button>
+        <div id="functions" class="content">
+            <ul>
+                <li><strong>獲取敏感資訊：</strong>社交工程可以用來獲取用戶的密碼、信用卡號碼等敏感資訊。</li>
+                <li><strong>進行身份盜竊：</strong>攻擊者可以利用獲取的資訊進行身份盜竊，造成經濟損失。</li>
+                <li><strong>破壞企業安全：</strong>社交工程攻擊可以導致企業內部資料洩露，影響企業的聲譽和運營。</li>
+            </ul>
+        </div>
+
+        <h2>社交工程的例子</h2>
+        <button class="btn btn-info" onclick="toggleContent('examples')">顯示/隱藏例子</button>
+        <div id="examples" class="content">
+            <ul>
+                <li><strong>釣魚攻擊：</strong>通過電子郵件或網站誘導用戶提供敏感資訊。</li>
+                <li><strong>電話詐騙：</strong>假裝成客服或技術支持，要求用戶提供帳號或密碼。</li>
+                <li><strong>假冒網站：</strong>建立與合法網站相似的網站，誘導用戶輸入個人資訊。</li>
+            </ul>
+        </div>
+
+        <h2>如何防範社交工程攻擊</h2>
+        <button class="btn btn-info" onclick="toggleContent('prevention')">顯示/隱藏防範措施</button>
+        <div id="prevention" class="content">
+            <ul>
+                <li>提高警覺性，對於不明來源的請求保持懷疑。</li>
+                <li>不隨意分享個人資訊，特別是在社交媒體上。</li>
+                <li>定期進行安全培訓，提高員工對社交工程的認識。</li>
+            </ul>
+        </div>
+
+        <h2>結論</h2>
+        <p>社交工程是一種常見且危險的攻擊手段，了解其原理和功能可以幫助個人和企業更好地防範潛在的安全威脅。</p>
+    </div>
+
+    <script>
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block"; // 顯示內容
+            } else {
+                content.style.display = "none"; // 隱藏內容
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>強制性存取控制</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mb-4">強制性存取控制</h1>
+        <p>強制性存取控制（Mandatory Access Control, MAC）是一種安全模型，根據系統管理員定義的規則來控制對資源的存取。這種模型通常應用於高安全性環境，如軍事和政府機構。</p>
+        
+        <div class="card">
+            <div class="card-header">
+                <h4>用戶角色</h4>
+            </div>
+            <div class="card-body">
+                <p>選擇一個用戶角色來查看其對資源的存取權限：</p>
+                <select id="userRole" class="form-control">
+                    <option value="admin">管理員</option>
+                    <option value="user">普通用戶</option>
+                    <option value="guest">訪客</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h4>資源存取權限</h4>
+            </div>
+            <div class="card-body">
+                <p id="accessControlOutput">請選擇一個用戶角色來查看其對資源的存取權限。</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const accessControlRules = {
+            admin: {
+                read: true,
+                write: true,
+                delete: true
+            },
+            user: {
+                read: true,
+                write: true,
+                delete: false
+            },
+            guest: {
+                read: true,
+                write: false,
+                delete: false
+            }
+        };
+
+        document.getElementById('userRole').addEventListener('change', function(event) {
+            const role = event.target.value;
+            const permissions = accessControlRules[role];
+            const output = `
+                <p>讀取權限: ${permissions.read ? '允許' : '拒絕'}</p>
+                <p>寫入權限: ${permissions.write ? '允許' : '拒絕'}</p>
+                <p>刪除權限: ${permissions.delete ? '允許' : '拒絕'}</p>
+            `;
+            document.getElementById('accessControlOutput').innerHTML = output;
+        });
+    </script>
+</body>
+</html>

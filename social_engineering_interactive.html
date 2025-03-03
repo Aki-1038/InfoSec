@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>社交工程互動展示</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .card {
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .demo-area {
+            border: 2px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .phishing-email {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: white;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 2px;
+        }
+        .hidden {
+            display: none;
+        }
+        .animate__animated {
+            animation-duration: 1s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center animate__animated animate__fadeIn">社交工程互動展示</h1>
+        
+        <!-- 導航欄 -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#" onclick="showSection('intro')">簡介</a>
+                <a class="nav-item nav-link" href="#" onclick="showSection('demo')">互動演示</a>
+                <a class="nav-item nav-link" href="#" onclick="showSection('prevention')">防範措施</a>
+            </div>
+        </nav>
+
+        <!-- 簡介部分 -->
+        <div id="intro" class="section">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card animate__animated animate__fadeInLeft">
+                        <div class="card-body">
+                            <h5 class="card-title">什麼是社交工程？</h5>
+                            <p class="card-text">社交工程是一種通過心理操縱來獲取敏感信息或進行欺詐的技術。</p>
+                            <button class="btn btn-primary" onclick="showDetails('definition')">了解更多</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card animate__animated animate__fadeInUp">
+                        <div class="card-body">
+                            <h5 class="card-title">常見攻擊方式</h5>
+                            <p class="card-text">包括釣魚郵件、假冒身份、電話詐騙等多種形式。</p>
+                            <button class="btn btn-primary" onclick="showDetails('methods')">查看詳情</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card animate__animated animate__fadeInRight">
+                        <div class="card-body">
+                            <h5 class="card-title">攻擊目的</h5>
+                            <p class="card-text">獲取敏感信息、進行詐騙、破壞系統安全等。</p>
+                            <button class="btn btn-primary" onclick="showDetails('purposes')">深入了解</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 互動演示部分 -->
+        <div id="demo" class="section hidden">
+            <h2>互動演示：釣魚郵件識別</h2>
+            <div class="demo-area">
+                <div class="phishing-email" id="demo-email">
+                    <p><strong>主旨：</strong> 您的帳戶需要立即驗證</p>
+                    <p><strong>寄件者：</strong> security@bank-verify.com</p>
+                    <p>親愛的客戶：</p>
+                    <p>我們發現您的帳戶存在異常活動，請立即點擊以下連結進行驗證：</p>
+                    <p><a href="#" onclick="return false;">https://secure-bank-verify.com/login</a></p>
+                    <p>如不立即處理，您的帳戶將被凍結。</p>
+                </div>
+                <div class="mt-3">
+                    <button class="btn btn-success" onclick="identifyPhishing()">找出可疑特徵</button>
+                    <button class="btn btn-warning" onclick="resetDemo()">重置演示</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 防範措施部分 -->
+        <div id="prevention" class="section hidden">
+            <h2>防範措施</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">個人防範</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">警惕來路不明的郵件和連結</li>
+                                <li class="list-group-item">不輕易透露個人資料</li>
+                                <li class="list-group-item">定期更新密碼</li>
+                                <li class="list-group-item">開啟雙重認證</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">組織防範</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">定期進行安全培訓</li>
+                                <li class="list-group-item">建立安全報告機制</li>
+                                <li class="list-group-item">實施存取控制</li>
+                                <li class="list-group-item">制定應急響應計劃</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 顯示不同部分的函數
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+
+        // 顯示詳細信息
+        function showDetails(type) {
+            let content = '';
+            switch(type) {
+                case 'definition':
+                    content = '社交工程是一種通過操縱人的心理來獲取敏感信息或進行欺詐的技術。攻擊者通常利用人們的信任、恐懼或貪婪等心理特點。';
+                    break;
+                case 'methods':
+                    content = '常見的攻擊方式包括釣魚郵件、假冒身份、電話詐騙等。攻擊者會偽裝成可信的身份來獲取信任。';
+                    break;
+                case 'purposes':
+                    content = '社交工程攻擊的目的包括獲取敏感信息、進行詐騙、破壞系統安全等。這些攻擊可能造成個人或組織的重大損失。';
+                    break;
+            }
+            alert(content);
+        }
+
+        // 識別釣魚郵件的可疑特徵
+        function identifyPhishing() {
+            const email = document.getElementById('demo-email');
+            email.innerHTML = email.innerHTML
+                .replace('security@bank-verify.com', '<span class="highlight">security@bank-verify.com</span>')
+                .replace('https://secure-bank-verify.com/login', '<span class="highlight">https://secure-bank-verify.com/login</span>')
+                .replace('立即', '<span class="highlight">立即</span>')
+                .replace('凍結', '<span class="highlight">凍結</span>');
+        }
+
+        // 重置演示
+        function resetDemo() {
+            location.reload();
+        }
+
+        // 初始顯示簡介部分
+        showSection('intro');
+    </script>
+</body>
+</html> 
